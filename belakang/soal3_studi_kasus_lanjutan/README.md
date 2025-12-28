@@ -214,15 +214,3 @@ Lihat file `README.md` di folder `soal2_studi_kasus/program/` untuk:
    - Testing guide included
 
 ---
-
-## ✨ Nilai Tambah
-
-- ✅ Framework (Express.js) - **NILAI LEBIH**
-- ✅ ORM (Sequelize) - **NILAI LEBIH**
-- ✅ Complete documentation - **NILAI LEBIH**
-- ✅ Anti-overselling dengan transaction - **NILAI LEBIH**
-- ✅ Role-based access control - **NILAI LEBIH**
-
----
-
-**Kesimpulan:** Tidak perlu file terpisah untuk Soal 3, karena sudah **ALL-IN-ONE** di Soal 2! 🎉
