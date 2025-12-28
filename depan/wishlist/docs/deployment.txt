@@ -1,0 +1,37 @@
+DEPLOYMENT URL
+==============
+
+FRONTEND URL: https://[USERNAME].github.io/wishlist
+BACKEND URL: (Optional - jika deploy backend)
+
+OPSI DEPLOYMENT FRONTEND:
+
+1. GitHub Pages (Recommended - Free)
+   URL: https://[USERNAME].github.io/wishlist
+   Deploy: Settings > Pages > Deploy from branch
+
+2. Vercel (Free)
+   URL: https://wishlist-[USERNAME].vercel.app
+
+3. Netlify (Free)  
+   URL: https://[USERNAME]-wishlist.netlify.app
+
+OPSI DEPLOYMENT BACKEND (Nilai Tambah):
+
+1. Railway (Free tier)
+   - Connect GitHub repo
+   - Auto-deploy backend folder
+
+2. Render (Free tier)
+   - Create Web Service dari GitHub
+
+3. Vercel Serverless (Free)
+   - Deploy sebagai serverless functions
+
+CATATAN:
+- Frontend dapat berjalan offline dengan localStorage
+- Backend deployment adalah OPSIONAL untuk nilai tambah
+
+CONTOH:
+Frontend: https://johndoe.github.io/wishlist
+Backend: https://wishlist-api.railway.app (optional)

@@ -1,0 +1,77 @@
+============================================
+REPOSITORY LINK - GDGoC UNSRI Backend Assignment
+============================================
+
+GitHub Repository:
+[Paste your GitHub repository URL here]
+
+Contoh: https://github.com/username/gdgoc-backend-assignment
+
+============================================
+SUBMISSION CHECKLIST
+============================================
+
+✅ Soal 1: Pemrograman
+   - [ ] BE_Pemrog_[Nama].py
+
+✅ Soal 2: Studi Kasus I
+   - [ ] BE_Flowchart_ERD_[Nama].pdf (atau .png/.jpg)
+   - [ ] server.js
+   - [ ] package.json
+   - [ ] .env.example
+   - [ ] .gitignore
+   - [ ] README.md
+
+✅ Soal 3: Studi Kasus II (Opsional)
+   - [ ] Sudah include dalam Soal 2 (all-in-one)
+   - [ ] JWT Authentication implemented
+   - [ ] Role-based Authorization implemented
+   - [ ] Anti-overselling mechanism implemented
+   - [ ] Complete API documentation
+
+============================================
+INSTRUCTIONS
+============================================
+
+1. Buat repository baru di GitHub (public)
+
+2. Clone repository ke local:
+   git clone <your-repo-url>
+
+3. Copy semua file project ke repository folder
+
+4. Commit dan push:
+   git add .
+   git commit -m "Initial commit: GDGoC Backend Assignment"
+   git push origin main
+
+5. Pastikan README.md terlihat bagus di GitHub
+
+6. Copy URL repository dan paste di atas
+
+7. Compress folder ini menjadi ZIP:
+   BE_SubmissionMember_[Nama Anda].ZIP
+
+8. Submit ZIP file sebelum deadline:
+   Minggu, 28 Desember 2025 pukul 23.59 WIB
+
+============================================
+NOTES
+============================================
+
+- Pastikan .env tidak di-push ke GitHub (sudah ada di .gitignore)
+- README.md harus lengkap dengan dokumentasi API
+- ERD dan Flowchart harus diberi watermark nama Anda
+- Test semua endpoint sebelum submit
+- Pastikan database dapat di-setup dengan mudah
+
+============================================
+AUTHOR INFORMATION
+============================================
+
+Nama: [Nama Anda]
+Email: [email@example.com]
+Division: Backend Development
+Institution: GDGoC UNSRI
+
+============================================

@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Portfolio nuredyawan - Fullstack Developer dengan spesialisasi Backend & Frontend Development">
+    <title>nuredyawan | Fullstack Developer Portfolio</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-wrapper">
+                <a href="#home" class="logo">nuredyawan</a>
+                <button class="hamburger" id="hamburger" aria-label="Toggle navigation menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+                <ul class="nav-menu" id="navMenu">
+                    <li><a href="#home" class="nav-link">Home</a></li>
+                    <li><a href="#about" class="nav-link">Tentang</a></li>
+                    <li><a href="#skills" class="nav-link">Skills</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1 class="hero-title">Hai, Saya <span class="highlight">Nuredy Rahma Gunawan</span></h1>
+                <p class="hero-subtitle">Fullstack Developer | Backend Engineer & Frontend intermediate level</p>
+                <p class="hero-description">Saya membangun solusi web yang scalable, efisien, dan user-friendly dengan fokus pada clean code dan arsitektur yang robust.</p>
+                <div class="hero-buttons">
+                    <a href="https://nuredyawan.site" target="_blank" rel="noopener" class="btn btn-primary">nuredyawan.site(web real)</a>
+                </div>
+            </div>
+            <div class="hero-image">
+                <img src="assets/images/me.jpg" alt="Avatar nuredyawan" class="avatar-image" onerror="this.classList.add('hidden'); document.querySelector('.avatar-fallback').classList.remove('hidden');">
+                <div class="avatar-fallback hidden">
+                    <i class="fas fa-user"></i>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="container">
+            <h2 class="section-title">Tentang Saya</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <p>Fullstack Developer dengan spesialisasi di Backend Engineering dan Frontend Development. 
+                        Dengan pengalaman membangun sistem management untuk restaurant dan platform pembelajaran interaktif, 
+                        saya fokus pada solusi yang scalable dan maintainable.
+                    </p>
+                    <p>
+                        Keahlian saya mencakup pengembangan REST API yang robust, desain database relasional, 
+                        dan pembuatan user interface yang responsive dan intuitif. Saya percaya bahwa clean code 
+                        dan arsitektur yang baik adalah fondasi dari aplikasi yang sukses.
+                    </p>
+                    <p>
+                        Setiap project yang saya kerjakan, dari backend restaurant management hingga frontend 
+                        platform pembelajaran, menunjukkan komitmen saya terhadap kualitas code, performa optimal, 
+                        dan pengalaman pengguna yang seamless.
+                    </p>
+                </div>
+                <div class="about-stats">
+                    <div class="stat-item">
+                        <h3>40+</h3>
+                        <p>API Endpoints</p>
+                    </div>
+                    <div class="stat-item">
+                        <h3>&lt;100ms</h3>
+                        <p>Avg Response Time</p>
+                    </div>
+                    <div class="stat-item">
+                        <h3>6+</h3>
+                        <p>Core Modules Built</p>
+                    </div>
+                    <div class="stat-item">
+                        <h3>2+</h3>
+                        <p>Tahun Pengalaman</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="skills">
+        <div class="container">
+            <h2 class="section-title">Skills & Expertise</h2>
+            <p class="section-subtitle">Teknologi dan tools yang saya kuasai untuk membangun aplikasi web modern</p>
+            
+            <div class="skills-grid">
+                <div class="skill-category">
+                    <h3><i class="fas fa-server"></i> Backend Development</h3>
+                    <ul class="skill-list">
+                        <li><i class="fab fa-node-js"></i> Node.js</li>
+                        <li><i class="fas fa-bolt"></i> Express.js</li>
+                        <li><i class="fas fa-database"></i> MySQL</li>
+                        <li><i class="fas fa-project-diagram"></i> REST API Design</li>
+                        <li><i class="fas fa-shield-alt"></i> Role-based Access Control</li>
+                        <li><i class="fas fa-sync"></i> Data Integrity Management</li>
+                    </ul>
+                </div>
+                <div class="skill-category">
+                    <h3><i class="fas fa-laptop-code"></i> Frontend Development</h3>
+                    <ul class="skill-list">
+                        <li><i class="fab fa-react"></i> React.js</li>
+                        <li><i class="fab fa-js"></i> TypeScript</li>
+                        <li><i class="fas fa-paint-brush"></i> CSS Modules</li>
+                        <li><i class="fas fa-mobile-alt"></i> Responsive Design</li>
+                        <li><i class="fas fa-cube"></i> Component Architecture</li>
+                        <li><i class="fas fa-clock"></i> Real-time UI Feedback</li>
+                    </ul>
+                </div>
+                <div class="skill-category">
+                    <h3><i class="fas fa-tools"></i> Tools & Practices</h3>
+                    <ul class="skill-list">
+                        <li><i class="fab fa-git-alt"></i> Git & Version Control</li>
+                        <li><i class="fas fa-code-branch"></i> API Testing & Documentation</li>
+                        <li><i class="fas fa-table"></i> Database Schema Design</li>
+                        <li><i class="fas fa-search"></i> Performance Optimization</li>
+                        <li><i class="fas fa-user-shield"></i> Security Best Practices</li>
+                        <li><i class="fas fa-bug"></i> Debugging & Troubleshooting</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <h3>nuredyawan</h3>
+                    <p>Fullstack Developer</p>
+                </div>
+                <div class="footer-links">
+                    <a href="#home">Home</a>
+                    <a href="#about">About</a>
+                    <a href="#skills">Skills</a>
+                </div>
+                <div class="footer-social">
+                    <a href="https://github.com" target="_blank" rel="noopener" aria-label="GitHub">
+                        <i class="fab fa-github"></i>
+                    </a>
+                    <a href="https://linkedin.com" target="_blank" rel="noopener" aria-label="LinkedIn">
+                        <i class="fab fa-linkedin"></i>
+                    </a>
+                    <a href="https://twitter.com" target="_blank" rel="noopener" aria-label="Twitter">
+                        <i class="fab fa-twitter"></i>
+                    </a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 nuredyawan. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+</body>
+</html>

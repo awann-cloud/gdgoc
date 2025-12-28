@@ -1,0 +1,607 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Aplikasi Daftar Keinginan (Wishlist) dengan fitur CRUD lengkap - GDGoC Frontend Task">
+    <meta name="author" content="GDGoC Member">
+    
+    <!-- Open Graph -->
+    <meta property="og:title" content="Wishlist App | Daftar Keinginan">
+    <meta property="og:description" content="Aplikasi untuk mengelola daftar keinginan Anda dengan mudah">
+    <meta property="og:type" content="website">
+    
+    <title>Wishlist App | Daftar Keinginan</title>
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>💝</text></svg>">
+    
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Preload Critical Resources -->
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+</head>
+<body>
+    <!-- Loading Overlay -->
+    <div id="loadingOverlay" class="loading-overlay">
+        <div class="loader">
+            <div class="loader-spinner"></div>
+            <p>Memuat...</p>
+        </div>
+    </div>
+
+    <!-- Notification Container -->
+    <div id="notificationContainer" class="notification-container" aria-live="polite"></div>
+
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="container">
+            <div class="nav-content">
+                <a href="#" class="app-logo">
+                    <i class="fas fa-heart"></i>
+                    <span>Wishlist</span>
+                </a>
+                
+                <button class="hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+                
+                <ul class="nav-menu" id="navMenu">
+                    <li><a href="#home" class="nav-link active">Beranda</a></li>
+                    <li><a href="#app" class="nav-link">Aplikasi</a></li>
+                    <li><a href="#features" class="nav-link">Fitur</a></li>
+                    <li><a href="#about" class="nav-link">Tentang</a></li>
+                </ul>
+                
+                <div class="nav-actions">
+                    <button class="btn btn-icon" id="themeToggle" aria-label="Toggle theme">
+                        <i class="fas fa-moon"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-badge">
+                    <i class="fas fa-star"></i>
+                    <span>Full-Stack Application</span>
+                </div>
+                <h1 class="hero-title">
+                    Kelola <span class="gradient-text">Wishlist</span> Anda dengan Mudah
+                </h1>
+                <p class="hero-description">
+                    Aplikasi modern untuk mencatat dan mengelola semua keinginan Anda. 
+                    Dilengkapi dengan fitur CRUD lengkap, kategori, filter, dan backend API.
+                </p>
+                <div class="hero-buttons">
+                    <a href="#app" class="btn btn-primary btn-lg">
+                        <i class="fas fa-rocket"></i>
+                        Mulai Sekarang
+                    </a>
+                    <a href="#features" class="btn btn-outline btn-lg">
+                        <i class="fas fa-info-circle"></i>
+                        Pelajari Fitur
+                    </a>
+                </div>
+                <div class="hero-stats">
+                    <div class="stat">
+                        <span class="stat-number" id="heroTotalItems">0</span>
+                        <span class="stat-label">Total Item</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-number" id="heroPurchasedItems">0</span>
+                        <span class="stat-label">Terbeli</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-number" id="heroCompletionRate">0%</span>
+                        <span class="stat-label">Selesai</span>
+                    </div>
+                </div>
+            </div>
+            <div class="hero-visual">
+                <div class="floating-cards">
+                    <div class="float-card card-1">
+                        <i class="fas fa-laptop"></i>
+                        <span>Elektronik</span>
+                    </div>
+                    <div class="float-card card-2">
+                        <i class="fas fa-tshirt"></i>
+                        <span>Fashion</span>
+                    </div>
+                    <div class="float-card card-3">
+                        <i class="fas fa-book"></i>
+                        <span>Buku</span>
+                    </div>
+                    <div class="float-card card-4">
+                        <i class="fas fa-plane"></i>
+                        <span>Travel</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="hero-wave">
+            <svg viewBox="0 0 1440 120" preserveAspectRatio="none">
+                <path d="M0,64L80,69.3C160,75,320,85,480,80C640,75,800,53,960,48C1120,43,1280,53,1360,58.7L1440,64L1440,120L1360,120C1280,120,1120,120,960,120C800,120,640,120,480,120C320,120,160,120,80,120L0,120Z"></path>
+            </svg>
+        </div>
+    </section>
+
+    <!-- Main App Section -->
+    <section id="app" class="app-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">
+                    <i class="fas fa-list-check"></i>
+                    Wishlist Saya
+                </h2>
+                <p class="section-subtitle">Kelola semua keinginan Anda di satu tempat</p>
+            </div>
+
+            <!-- Stats Dashboard -->
+            <div class="stats-dashboard" id="statsDashboard">
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-clipboard-list"></i>
+                    </div>
+                    <div class="stat-info">
+                        <span class="stat-value" id="totalItems">0</span>
+                        <span class="stat-label">Total Item</span>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon pending">
+                        <i class="fas fa-clock"></i>
+                    </div>
+                    <div class="stat-info">
+                        <span class="stat-value" id="pendingItems">0</span>
+                        <span class="stat-label">Pending</span>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon success">
+                        <i class="fas fa-check-circle"></i>
+                    </div>
+                    <div class="stat-info">
+                        <span class="stat-value" id="purchasedItems">0</span>
+                        <span class="stat-label">Terbeli</span>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon money">
+                        <i class="fas fa-wallet"></i>
+                    </div>
+                    <div class="stat-info">
+                        <span class="stat-value" id="totalValue">Rp 0</span>
+                        <span class="stat-label">Total Nilai</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Add Item Form -->
+            <div class="form-card">
+                <div class="form-header">
+                    <h3>
+                        <i class="fas fa-plus-circle"></i>
+                        <span id="formTitle">Tambah Barang Baru</span>
+                    </h3>
+                    <button type="button" class="btn btn-text hidden" id="cancelEditBtn">
+                        <i class="fas fa-times"></i>
+                        Batal
+                    </button>
+                </div>
+                
+                <form id="wishlistForm" class="wishlist-form" novalidate>
+                    <input type="hidden" id="editItemId" value="">
+                    
+                    <div class="form-row">
+                        <div class="form-group form-group-lg">
+                            <label for="itemName">
+                                <i class="fas fa-tag"></i>
+                                Nama Barang <span class="required">*</span>
+                            </label>
+                            <input 
+                                type="text" 
+                                id="itemName" 
+                                name="name"
+                                placeholder="Contoh: MacBook Pro M3"
+                                required
+                                maxlength="100"
+                                autocomplete="off"
+                            >
+                            <span class="error-message" id="nameError"></span>
+                        </div>
+                    </div>
+                    
+                    <div class="form-row form-row-2">
+                        <div class="form-group">
+                            <label for="itemPrice">
+                                <i class="fas fa-money-bill"></i>
+                                Harga (Rp)
+                            </label>
+                            <input 
+                                type="number" 
+                                id="itemPrice" 
+                                name="price"
+                                placeholder="Contoh: 25000000"
+                                min="0"
+                                step="1000"
+                            >
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="itemCategory">
+                                <i class="fas fa-folder"></i>
+                                Kategori
+                            </label>
+                            <select id="itemCategory" name="category">
+                                <option value="">Pilih Kategori</option>
+                                <option value="elektronik">📱 Elektronik</option>
+                                <option value="fashion">👕 Fashion</option>
+                                <option value="buku">📚 Buku</option>
+                                <option value="hobi">🎮 Hobi & Olahraga</option>
+                                <option value="rumah">🏠 Rumah & Dekorasi</option>
+                                <option value="travel">✈️ Travel</option>
+                                <option value="lainnya">📦 Lainnya</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <div class="form-row form-row-2">
+                        <div class="form-group">
+                            <label for="itemPriority">
+                                <i class="fas fa-flag"></i>
+                                Prioritas
+                            </label>
+                            <select id="itemPriority" name="priority">
+                                <option value="medium">🟡 Medium</option>
+                                <option value="high">🔴 Tinggi</option>
+                                <option value="low">🟢 Rendah</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="itemImageUrl">
+                                <i class="fas fa-image"></i>
+                                URL Gambar
+                            </label>
+                            <input 
+                                type="url" 
+                                id="itemImageUrl" 
+                                name="imageUrl"
+                                placeholder="https://example.com/image.jpg"
+                            >
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="itemDescription">
+                            <i class="fas fa-align-left"></i>
+                            Deskripsi
+                        </label>
+                        <textarea 
+                            id="itemDescription" 
+                            name="description"
+                            placeholder="Tambahkan catatan atau deskripsi..."
+                            rows="3"
+                            maxlength="500"
+                        ></textarea>
+                        <span class="char-counter"><span id="descCharCount">0</span>/500</span>
+                    </div>
+                    
+                    <div class="form-actions">
+                        <button type="submit" class="btn btn-primary btn-lg" id="submitBtn">
+                            <i class="fas fa-plus"></i>
+                            <span id="submitBtnText">Tambah ke Wishlist</span>
+                        </button>
+                    </div>
+                </form>
+            </div>
+
+            <!-- Filters & Controls -->
+            <div class="controls-bar">
+                <div class="search-box">
+                    <i class="fas fa-search"></i>
+                    <input 
+                        type="text" 
+                        id="searchInput" 
+                        placeholder="Cari barang..."
+                        autocomplete="off"
+                    >
+                    <button type="button" class="btn btn-icon btn-clear hidden" id="clearSearch" aria-label="Clear search">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+                
+                <div class="filter-controls">
+                    <select id="filterCategory" class="filter-select" aria-label="Filter berdasarkan kategori">
+                        <option value="">Semua Kategori</option>
+                        <option value="elektronik">📱 Elektronik</option>
+                        <option value="fashion">👕 Fashion</option>
+                        <option value="buku">📚 Buku</option>
+                        <option value="hobi">🎮 Hobi</option>
+                        <option value="rumah">🏠 Rumah</option>
+                        <option value="travel">✈️ Travel</option>
+                        <option value="lainnya">📦 Lainnya</option>
+                    </select>
+                    
+                    <select id="filterPriority" class="filter-select" aria-label="Filter berdasarkan prioritas">
+                        <option value="">Semua Prioritas</option>
+                        <option value="high">🔴 Tinggi</option>
+                        <option value="medium">🟡 Medium</option>
+                        <option value="low">🟢 Rendah</option>
+                    </select>
+                    
+                    <select id="sortBy" class="filter-select" aria-label="Urutkan berdasarkan">
+                        <option value="newest">Terbaru</option>
+                        <option value="oldest">Terlama</option>
+                        <option value="price-desc">Harga ↓</option>
+                        <option value="price-asc">Harga ↑</option>
+                        <option value="name">Nama A-Z</option>
+                        <option value="priority">Prioritas</option>
+                    </select>
+                </div>
+                
+                <div class="view-controls">
+                    <label class="toggle-switch">
+                        <input type="checkbox" id="showPurchased">
+                        <span class="toggle-slider"></span>
+                        <span class="toggle-label">Tampilkan Terbeli</span>
+                    </label>
+                    
+                    <div class="view-mode">
+                        <button class="btn btn-icon active" id="viewGrid" title="Grid View">
+                            <i class="fas fa-th-large"></i>
+                        </button>
+                        <button class="btn btn-icon" id="viewList" title="List View">
+                            <i class="fas fa-list"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Wishlist Items -->
+            <div class="wishlist-container">
+                <div id="wishlistItems" class="wishlist-grid">
+                    <!-- Items will be rendered here -->
+                </div>
+                
+                <!-- Empty State -->
+                <div id="emptyState" class="empty-state hidden">
+                    <div class="empty-icon">
+                        <i class="fas fa-box-open"></i>
+                    </div>
+                    <h3>Wishlist Kosong</h3>
+                    <p>Belum ada barang di wishlist Anda. Mulai tambahkan keinginan Anda!</p>
+                    <button class="btn btn-primary" onclick="document.getElementById('itemName').focus()">
+                        <i class="fas fa-plus"></i>
+                        Tambah Barang Pertama
+                    </button>
+                </div>
+                
+                <!-- Loading State -->
+                <div id="listLoading" class="list-loading hidden">
+                    <div class="skeleton-card"></div>
+                    <div class="skeleton-card"></div>
+                    <div class="skeleton-card"></div>
+                </div>
+            </div>
+
+            <!-- Pagination -->
+            <div id="pagination" class="pagination hidden">
+                <button type="button" class="btn btn-icon" id="prevPage" disabled title="Halaman sebelumnya" aria-label="Halaman sebelumnya">
+                    <i class="fas fa-chevron-left"></i>
+                </button>
+                <span class="page-info">
+                    Halaman <span id="currentPage">1</span> dari <span id="totalPages">1</span>
+                </span>
+                <button type="button" class="btn btn-icon" id="nextPage" title="Halaman selanjutnya" aria-label="Halaman selanjutnya">
+                    <i class="fas fa-chevron-right"></i>
+                </button>
+            </div>
+
+            <!-- Bulk Actions -->
+            <div id="bulkActions" class="bulk-actions hidden">
+                <button class="btn btn-danger" id="deletePurchasedBtn">
+                    <i class="fas fa-trash"></i>
+                    Hapus Semua Terbeli
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="features-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">
+                    <i class="fas fa-star"></i>
+                    Fitur Unggulan
+                </h2>
+                <p class="section-subtitle">Semua yang Anda butuhkan untuk mengelola wishlist</p>
+            </div>
+            
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-plus-circle"></i>
+                    </div>
+                    <h3>Create</h3>
+                    <p>Tambahkan barang baru dengan detail lengkap: nama, harga, kategori, dan deskripsi.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-eye"></i>
+                    </div>
+                    <h3>Read</h3>
+                    <p>Lihat semua wishlist dengan filter kategori, prioritas, dan pencarian cepat.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-edit"></i>
+                    </div>
+                    <h3>Update</h3>
+                    <p>Edit informasi barang kapan saja. Tandai sebagai terbeli dengan satu klik.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-trash-alt"></i>
+                    </div>
+                    <h3>Delete</h3>
+                    <p>Hapus item yang tidak diinginkan. Bulk delete untuk item yang sudah terbeli.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-server"></i>
+                    </div>
+                    <h3>REST API</h3>
+                    <p>Backend Node.js dengan Express.js. API yang well-documented dan clean code.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-mobile-alt"></i>
+                    </div>
+                    <h3>Responsive</h3>
+                    <p>Desain yang responsif dan optimal di semua ukuran layar.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about-section">
+        <div class="container">
+            <div class="about-content">
+                <div class="about-text">
+                    <h2>Tentang Aplikasi</h2>
+                    <p>
+                        Wishlist App adalah aplikasi full-stack yang dibuat untuk GDGoC Frontend Task.
+                        Aplikasi ini mendemonstrasikan kemampuan dalam membuat aplikasi web modern dengan
+                        fitur CRUD lengkap, desain responsif, dan backend API.
+                    </p>
+                    <h3>Tech Stack:</h3>
+                    <div class="tech-stack">
+                        <span class="tech-badge">HTML5</span>
+                        <span class="tech-badge">CSS3</span>
+                        <span class="tech-badge">JavaScript ES6+</span>
+                        <span class="tech-badge">Node.js</span>
+                        <span class="tech-badge">Express.js</span>
+                    </div>
+                </div>
+                <div class="api-docs">
+                    <h3>
+                        <i class="fas fa-code"></i>
+                        API Endpoints
+                    </h3>
+                    <div class="endpoint-list">
+                        <div class="endpoint">
+                            <span class="method get">GET</span>
+                            <code>/api/v1/wishlist</code>
+                            <span class="desc">Get all items</span>
+                        </div>
+                        <div class="endpoint">
+                            <span class="method get">GET</span>
+                            <code>/api/v1/wishlist/:id</code>
+                            <span class="desc">Get single item</span>
+                        </div>
+                        <div class="endpoint">
+                            <span class="method post">POST</span>
+                            <code>/api/v1/wishlist</code>
+                            <span class="desc">Create item</span>
+                        </div>
+                        <div class="endpoint">
+                            <span class="method put">PUT</span>
+                            <code>/api/v1/wishlist/:id</code>
+                            <span class="desc">Update item</span>
+                        </div>
+                        <div class="endpoint">
+                            <span class="method patch">PATCH</span>
+                            <code>/api/v1/wishlist/:id/toggle</code>
+                            <span class="desc">Toggle status</span>
+                        </div>
+                        <div class="endpoint">
+                            <span class="method delete">DELETE</span>
+                            <code>/api/v1/wishlist/:id</code>   <span class="desc">Delete item</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <h3>
+                        <i class="fas fa-heart"></i>
+                        Wishlist App
+                    </h3>
+                    <p>GDGoC Frontend Task - Studi Kasus II</p>
+                </div>
+                <div class="footer-links">
+                    <a href="#home">Beranda</a>
+                    <a href="#app">Aplikasi</a>
+                    <a href="#features">Fitur</a>
+                    <a href="#about">Tentang</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Wishlist App. Made with <i class="fas fa-heart"></i> for GDGoC</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Delete Confirmation Modal -->
+    <div id="deleteModal" class="modal" role="dialog" aria-modal="true" aria-labelledby="deleteModalTitle">
+        <div class="modal-backdrop"></div>
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 id="deleteModalTitle">
+                    <i class="fas fa-exclamation-triangle"></i>
+                    Konfirmasi Hapus
+                </h3>
+                <button class="btn btn-icon modal-close" aria-label="Close modal">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <p>Apakah Anda yakin ingin menghapus item ini?</p>
+                <p class="item-name" id="deleteItemName"></p>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary modal-cancel">Batal</button>
+                <button class="btn btn-danger" id="confirmDeleteBtn">
+                    <i class="fas fa-trash"></i>
+                    Hapus
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scroll to Top -->
+    <button class="scroll-to-top" id="scrollToTop" aria-label="Scroll to top">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <!-- Scripts -->
+    <script src="js/config.js?v=debug2"></script>
+    <script src="js/api.js?v=debug2"></script>
+    <script src="js/storage.js?v=debug2"></script>
+    <script src="js/ui.js?v=debug2"></script>
+    <script src="js/app.js?v=debug2"></script>
+</body>
+</html>

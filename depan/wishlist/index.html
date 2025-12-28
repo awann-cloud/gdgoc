@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Aplikasi Daftar Keinginan (Wishlist) dengan fitur CRUD lengkap">
+    <title>Wishlist App | Daftar Keinginan</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-content">
+                <h1 class="app-title">
+                    <i class="fas fa-heart"></i> Wishlist App
+                </h1>
+                <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+                <ul class="nav-menu" id="navMenu">
+                    <li><a href="#home" class="nav-link">Home</a></li>
+                    <li><a href="#app" class="nav-link">Aplikasi</a></li>
+                    <li><a href="#about" class="nav-link">Tentang</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h2>Catat Semua Keinginan Anda</h2>
+                <p>Aplikasi sederhana namun powerful untuk mengelola daftar keinginan Anda dengan mudah</p>
+                <button class="btn btn-primary" onclick="document.getElementById('app').scrollIntoView({behavior:'smooth'})">
+                    Mulai Sekarang
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main App Section -->
+    <section id="app" class="app-section">
+        <div class="container">
+            <h2>Wishlist Saya</h2>
+            
+            <!-- Add Item Form -->
+            <div class="add-item-section">
+                <h3>Tambah Barang Baru</h3>
+                <form id="addItemForm" class="add-item-form" aria-label="Form tambah barang">
+                    <div class="form-group">
+                        <input 
+                            type="text" 
+                            id="itemName" 
+                            placeholder="Nama barang (contoh: Laptop gaming)" 
+                            required
+                            aria-label="Nama barang"
+                        >
+                        <span class="error-message" id="nameError"></span>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <input 
+                                type="number" 
+                                id="itemPrice" 
+                                placeholder="Harga (optional)" 
+                                min="0"
+                                step="0.01"
+                                aria-label="Harga barang"
+                            >
+                        </div>
+                        
+                        <div class="form-group">
+                            <select id="itemCategory" aria-label="Kategori barang">
+                                <option value="">Pilih Kategori</option>
+                                <option value="elektronik">Elektronik</option>
+                                <option value="fashion">Fashion</option>
+                                <option value="buku">Buku</option>
+                                <option value="hobi">Hobi & Olahraga</option>
+                                <option value="rumah">Rumah & Dekorasi</option>
+                                <option value="travel">Travel</option>
+                                <option value="lainnya">Lainnya</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <textarea 
+                            id="itemDescription" 
+                            placeholder="Deskripsi (optional)" 
+                            rows="3"
+                            aria-label="Deskripsi barang"
+                        ></textarea>
+                    </div>
+                    
+                    <button type="submit" class="btn btn-primary btn-add">
+                        <i class="fas fa-plus"></i> Tambah Barang
+                    </button>
+                </form>
+            </div>
+
+            <!-- Filter & Sort Section -->
+            <div class="controls-section">
+                <div class="filters">
+                    <select id="categoryFilter" aria-label="Filter kategori">
+                        <option value="">Semua Kategori</option>
+                        <option value="elektronik">Elektronik</option>
+                        <option value="fashion">Fashion</option>
+                        <option value="buku">Buku</option>
+                        <option value="hobi">Hobi & Olahraga</option>
+                        <option value="rumah">Rumah & Dekorasi</option>
+                        <option value="travel">Travel</option>
+                        <option value="lainnya">Lainnya</option>
+                    </select>
+
+                    <button id="togglePurchased" class="btn btn-secondary" aria-label="Toggle show purchased items">
+                        <i class="fas fa-eye"></i> Tampilkan Sudah Dibeli
+                    </button>
+                </div>
+
+                <div class="sort-options">
+                    <select id="sortBy" aria-label="Urutkan berdasarkan">
+                        <option value="newest">Terbaru</option>
+                        <option value="oldest">Tertua</option>
+                        <option value="price-low">Harga Terendah</option>
+                        <option value="price-high">Harga Tertinggi</option>
+                        <option value="name">Nama A-Z</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- Stats -->
+            <div class="stats-bar">
+                <div class="stat">
+                    <span class="stat-value" id="totalItems">0</span>
+                    <span class="stat-label">Total Barang</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-value" id="purchasedItems">0</span>
+                    <span class="stat-label">Sudah Dibeli</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-value" id="totalPrice">Rp 0</span>
+                    <span class="stat-label">Total Harga</span>
+                </div>
+            </div>
+
+            <!-- Wishlist Items -->
+            <div class="wishlist-container" id="wishlistContainer">
+                <div class="empty-state">
+                    <i class="fas fa-inbox"></i>
+                    <h3>Wishlist Kosong</h3>
+                    <p>Mulai tambahkan barang yang Anda inginkan</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about-section">
+        <div class="container">
+            <h2>Tentang Aplikasi Ini</h2>
+            <div class="about-content">
+                <div class="feature-card">
+                    <i class="fas fa-plus-circle"></i>
+                    <h3>Tambah dengan Mudah</h3>
+                    <p>Tambahkan barang ke wishlist dengan detail lengkap seperti harga dan deskripsi</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-list"></i>
+                    <h3>Kelola Wishlist</h3>
+                    <p>Lihat semua barang yang Anda inginkan dalam satu tempat yang terorganisir</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-edit"></i>
+                    <h3>Edit Kapan Saja</h3>
+                    <p>Ubah informasi barang sesuai dengan kebutuhan Anda</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-trash"></i>
+                    <h3>Hapus Barang</h3>
+                    <p>Hapus barang yang sudah Anda dapat atau tidak lagi ingin</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-check-circle"></i>
+                    <h3>Tandai Dibeli</h3>
+                    <p>Tandai barang sebagai sudah dibeli dan lihat progres Anda</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-save"></i>
+                    <h3>Simpan Otomatis</h3>
+                    <p>Data Anda disimpan di browser secara otomatis tanpa perlu login</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 Wishlist App. Semua hak dilindungi.</p>
+            <button class="scroll-to-top" id="scrollToTop" aria-label="Scroll to top">
+                <i class="fas fa-arrow-up"></i>
+            </button>
+        </div>
+    </footer>
+
+    <!-- Modal Edit Item -->
+    <div id="editModal" class="modal" aria-label="Modal edit barang">
+        <div class="modal-content">
+            <button class="modal-close" id="modalClose" aria-label="Close modal">&times;</button>
+            <h2>Edit Barang</h2>
+            <form id="editItemForm" aria-label="Form edit barang">
+                <input type="hidden" id="editItemId">
+                
+                <div class="form-group">
+                    <label for="editItemName">Nama Barang</label>
+                    <input type="text" id="editItemName" required aria-label="Nama barang">
+                    <span class="error-message" id="editNameError"></span>
+                </div>
+                
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="editItemPrice">Harga</label>
+                        <input type="number" id="editItemPrice" min="0" step="0.01" aria-label="Harga barang">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="editItemCategory">Kategori</label>
+                        <select id="editItemCategory" aria-label="Kategori barang">
+                            <option value="">Pilih Kategori</option>
+                            <option value="elektronik">Elektronik</option>
+                            <option value="fashion">Fashion</option>
+                            <option value="buku">Buku</option>
+                            <option value="hobi">Hobi & Olahraga</option>
+                            <option value="rumah">Rumah & Dekorasi</option>
+                            <option value="travel">Travel</option>
+                            <option value="lainnya">Lainnya</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="editItemDescription">Deskripsi</label>
+                    <textarea id="editItemDescription" rows="3" aria-label="Deskripsi barang"></textarea>
+                </div>
+                
+                <div class="modal-buttons">
+                    <button type="submit" class="btn btn-primary">Simpan Perubahan</button>
+                    <button type="button" class="btn btn-secondary" id="modalCancel">Batal</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="js/app.js"></script>
+</body>
+</html>
