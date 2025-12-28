@@ -1,12 +1,4 @@
 GITHUB REPOSITORY URL
 =====================
 
-URL: https://github.com/[USERNAME]/portfolio
-
-INSTRUKSI:
-1. Ganti [USERNAME] dengan username GitHub Anda
-2. Pastikan repository adalah PUBLIC
-3. Repository harus berisi semua source code portfolio
-
-CONTOH:
-https://github.com/johndoe/portfolio
+URL: https://github.com/awann-cloud/gdgoc/tree/main/depan
