@@ -1,12 +1,4 @@
 GITHUB REPOSITORY URL
 =====================
 
-URL: https://github.com/[USERNAME]/wishlist
-
-INSTRUKSI:
-1. Ganti [USERNAME] dengan username GitHub Anda
-2. Pastikan repository adalah PUBLIC
-3. Repository harus berisi frontend DAN backend code
-
-CONTOH:
-https://github.com/johndoe/wishlist-app
+URL: https://github.com/awann-cloud/gdgoc/tree/main/depan
