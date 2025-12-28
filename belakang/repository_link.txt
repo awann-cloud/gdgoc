@@ -3,31 +3,29 @@ REPOSITORY LINK - GDGoC UNSRI Backend Assignment
 ============================================
 
 GitHub Repository:
-[Paste your GitHub repository URL here]
-
-Contoh: https://github.com/username/gdgoc-backend-assignment
+https://github.com/awann-cloud/gdgoc/tree/main/belakang
 
 ============================================
 SUBMISSION CHECKLIST
 ============================================
 
 ✅ Soal 1: Pemrograman
-   - [ ] BE_Pemrog_[Nama].py
+   - [v] BE_Pemrog_Nuredy_Rahma_Guawan.py
 
 ✅ Soal 2: Studi Kasus I
-   - [ ] BE_Flowchart_ERD_[Nama].pdf (atau .png/.jpg)
-   - [ ] server.js
-   - [ ] package.json
-   - [ ] .env.example
-   - [ ] .gitignore
-   - [ ] README.md
+   - [v] BE_Flowchart_ERD_[Nama].pdf (atau .png/.jpg)
+   - [v] server.js
+   - [v] package.json
+   - [v] .env.example
+   - [v] .gitignore
+   - [v] README.md
 
 ✅ Soal 3: Studi Kasus II (Opsional)
-   - [ ] Sudah include dalam Soal 2 (all-in-one)
-   - [ ] JWT Authentication implemented
-   - [ ] Role-based Authorization implemented
-   - [ ] Anti-overselling mechanism implemented
-   - [ ] Complete API documentation
+   - [v] Sudah include dalam Soal 2 (all-in-one)
+   - [v] JWT Authentication implemented
+   - [v] Role-based Authorization implemented
+   - [v] Anti-overselling mechanism implemented
+   - [v] Complete API documentation
 
 ============================================
 INSTRUCTIONS
@@ -61,7 +59,7 @@ NOTES
 
 - Pastikan .env tidak di-push ke GitHub (sudah ada di .gitignore)
 - README.md harus lengkap dengan dokumentasi API
-- ERD dan Flowchart harus diberi watermark nama Anda
+- ERD dan Flowchart harus diberi watermark nama pribadi
 - Test semua endpoint sebelum submit
 - Pastikan database dapat di-setup dengan mudah
 
@@ -69,8 +67,8 @@ NOTES
 AUTHOR INFORMATION
 ============================================
 
-Nama: [Nama Anda]
-Email: [email@example.com]
+Nama: Nuredy Rahma Gunawan
+Email: nuredyramha@gmai.com
 Division: Backend Development
 Institution: GDGoC UNSRI
 
